@@ -1,3 +1,5 @@
+set :use_sudo, false
+
 default_run_options[:pty] = true
 
 set :application, "rails3_fcgi"
