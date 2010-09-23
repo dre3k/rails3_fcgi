@@ -20,6 +20,7 @@ set :scm_verbose, true
 deploy.task :db_link do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
+  run "chmod 0777 #{release_path}/db"
 end
 after "deploy:update_code", "deploy:db_link"
 
