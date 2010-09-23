@@ -26,7 +26,7 @@ after "deploy:update_code", "deploy:db_link"
 
 namespace :deploy do
   task :restart do
-    run "#{sudo} killall dispatch.fcgi"
+    run "#{sudo} killall #{application}.fcgi"
     run "wget #{domain} --spider -O  -"
   end
 end
