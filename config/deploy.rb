@@ -6,7 +6,7 @@ set :application, "rails3_fcgi"
 set :domain,      "#{application}.lan"
 set :user,        "krg"  # The server's user for deploys
 set :repository,  "git@github.com:dre3k/#{application}.git"
-set :deploy_to,   "ssh://#{user}@#{domain}/home/#{user}/www/#{application}"
+set :deploy_to,   "/home/#{user}/www/#{application}"
 
 set :scm, :git
 
