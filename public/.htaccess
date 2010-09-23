@@ -1,0 +1,14 @@
+SetEnv RAILS_RELATIVE_URL_ROOT /rails3_fcgi
+
+RewriteEngine On
+
+RewriteRule ^(stylesheets/.*)$ - [L]
+RewriteRule ^(javascripts/.*)$ - [L]
+RewriteRule ^(images/.*)$ - [L]
+
+RewriteRule ^$ index.html [QSA]
+RewriteRule ^([^.]+)$ $1.html [QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ dispatch.fcgi [E=X-HTTP_AUTHORIZATION:%{HTTP:Authorization},QSA,L]
+
