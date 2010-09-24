@@ -7,7 +7,7 @@ You need to have FastCGI library for Ruby and FastCGI module for apache2 install
 # Files of interest:
 
 ## Apache2 site configuration
-<code><pre>
+<pre>
 <VirtualHost rails3_fcgi.lan:80>
   DefaultInitEnv RAILS_ENV production
   DocumentRoot /home/krg/www/rails3_fcgi/current/public
@@ -18,7 +18,7 @@ You need to have FastCGI library for Ruby and FastCGI module for apache2 install
     Allow from all
   </Directory>
 </VirtualHost>
-</pre></code>
+</pre>
 
 ## public/.htaccess
 <pre>
@@ -38,7 +38,7 @@ RewriteRule ^(.*)$ rails3_fcgi.fcgi [E=X-HTTP_AUTHORIZATION:%{HTTP:Authorization
 </pre>
 
 ## public/rails3_fcgi.fcgi
-<code>
+<pre>
 #!/usr/bin/ruby
 
 require_relative '../config/environment'
@@ -58,10 +58,10 @@ class Rack::PathInfoRewriter
 end
 
 Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(Rails3Fcgi::Application)
-</code>
+</pre>
 
 ## config/routes.rb
-<code>
+<pre>
 Rails3Fcgi::Application.routes.draw do
   my_draw = Proc.new do
     resources :entities
@@ -76,10 +76,10 @@ Rails3Fcgi::Application.routes.draw do
     my_draw.call
   end
 end
-</code>
+</pre>
 
 ## config/deploy.rb
-<code>
+<pre>
 set :application, "rails3_fcgi"
 set :user,        "krg"  # The server's user for deploys
 set :domain,      "#{application}.lan"
@@ -112,4 +112,4 @@ namespace :deploy do
     run "wget #{domain} --spider -O  -"
   end
 end
-</code>
+</pre>
