@@ -8,14 +8,14 @@ You need to have FastCGI library for Ruby and FastCGI module for apache2 install
 
 ## Apache2 site configuration
 `<VirtualHost rails3_fcgi.lan:80>`
-  DefaultInitEnv RAILS_ENV production
-  DocumentRoot /home/krg/www/rails3_fcgi/current/public
-  <Directory /home/krg/www/rails3_fcgi/current/public>
-    Options ExecCGI FollowSymLinks
-    AllowOverride all
-    Order allow,deny
-    Allow from all
-  </Directory>
+`  DefaultInitEnv RAILS_ENV production`
+`  DocumentRoot /home/krg/www/rails3_fcgi/current/public`
+`  <Directory /home/krg/www/rails3_fcgi/current/public>`
+`    Options ExecCGI FollowSymLinks`
+`    AllowOverride all`
+`    Order allow,deny`
+`    Allow from all`
+`  </Directory>`
 `</VirtualHost>`
 
 ## public/.htaccess
